@@ -52,12 +52,12 @@
 
 <div id="readingList">
     <h2>Reading List</h2>
-    <table>
+    <table id="reading_table">
         <thead>
             <tr>
-                <td>Story</td>
-                <td class="date">Added</td>
-                <td>Delete?</td>
+                <td data-field="story">Story</td>
+                <td data-field="added" data-sortable="true" data-sort-name="_date_data" data-sorter="OrderBy">Added</td>
+                <td data-field="delete">Delete?</td>
             </tr>
         </thead>
         <tbody>
