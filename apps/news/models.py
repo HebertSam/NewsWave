@@ -56,14 +56,24 @@ class User(models.Model):
         return "Username: {}".format(self.username)
 
 class NoteManager(models.Manager):
-    def validate_and_create(self, postData):
+    def validate_and_create(self, postData, userID):
         errors = {}
-        if len(postData['note']) == 0:
+        if len(postData['text']) == 0:
             errors['len'] = "You can't post an empty note!"
+        if len(postData['title']) > 255:
+            errors['titlelen'] = "Titles must be less than 255 characters long!"
         if len(errors) == 0:
-            Note.objects.create(text=postData['note'])
+            user = User.objects.get(id=userID)
+            Note.objects.create(title=postData['title'], text=postData['text'], user=user)
         return errors
+    def delete_note(self, postData):
+        errors = {}
+        note = Note.objects.get(id=postData['note_id'])
+        note.delete()
+        return errors
+
 class Note(models.Model):
+    title = models.CharField(max_length=255, null=True)
     text = models.TextField()
     user = models.ForeignKey(User, related_name="notes")
     created_at = models.DateTimeField(auto_now_add = True)

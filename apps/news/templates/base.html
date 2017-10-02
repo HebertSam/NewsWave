@@ -12,6 +12,7 @@
                     linear-gradient(225deg, #0D4D4D 25%, transparent 25%) -50px 0,
                     linear-gradient(315deg, #0D4D4D 25%, transparent 25%),
                     linear-gradient(45deg, #0D4D4D 25%, transparent 25%);	
+                text-shadow: 2px 2px black;
                 background-size: 100px 100px;
                 background-color: teal;
                 font-family: 'Germania One', cursive;
@@ -19,6 +20,24 @@
             footer{
                 font-size:30px;
                 padding:50px;
+                margin-top:15px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                flex: 1;
+                align-self:center;
+                width:100%;
+            }
+            .wrapper{
+                min-height:100vh;
+                flex-direction:column;
+                display:flex;
+            }
+            .VertCenterTop{
+                align-self:flex-start;
+            }
+            .VertCenterBottom{
+                align-self:flex-end;
             }
             footer a{
                 color: yellow !important;
@@ -42,9 +61,17 @@
             h1, h2{
                 font-family: 'Germania One', cursive;
             }
+            .error{
+                color:red;
+                font-weight:bold;
+                font-size:30px;
+                text-align:center;
+                list-style-type: none;
+            }
         </style>
         <title>NewsWave - A homepage to call your own</title>
     </head>
+    <div class="wrapper">
     <div class="jumbotron">
         <h1>NewsWave</h1>
         <p>A homepage to call your own</p>
@@ -54,7 +81,7 @@
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     {% if current_page == "home" %}
-                        <li class="active"><a href="/">Home</a></li>
+                        <li class="active"><a href="/">News</a></li>
                     {% else %}
                         <li><a href="/">Home</a></li>
                     {% endif %}
@@ -67,6 +94,11 @@
                         <li class="active"><a href="/reading_list">Reading List</a></li>
                     {% else %}
                         <li><a href="/reading_list">Reading List</a></li>
+                    {% endif %}
+                    {% if current_page == "notes" %}
+                      <li class="active"><a href="/notes">Notes</a></li>
+                    {% else %}
+                      <li><a href="/notes">Notes</a></li>
                     {% endif %}
                     <li class="showHome"><a href="/logout">Log Out</a></li>
                 </ul>
@@ -83,5 +115,10 @@
     <body>
         {% block content %} {% endblock content %}
     </body>
-    <footer>Powered by <a href="https://newsapi.org/">newsapi.org</footer>
+    <footer>
+        <div class="VertCenterTop"></div>
+        <div>Powered by <a href="https://newsapi.org/">newsapi.org</div>
+        <div class="VertCenterBottom"></div>
+    </footer>
+    </div>
 </html>

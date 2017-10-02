@@ -10,6 +10,9 @@
             color:white;
             background-color:#34282C
         }
+        input{
+            margin-top:10px !important;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -37,7 +40,16 @@
                         }
                     }
                 }
+                extractSourceIds();
             });
+
+            function extractSourceIds(){
+                var selectedOptions = $("#outlet_box :selected");
+                var values = [];
+                for(var i = 0; i < selectedOptions.length; i++){
+                    values.push(selectedOptions[i].value);
+                }
+            }
         });
     </script>
     <form action="/settings" method="POST">
@@ -69,8 +81,6 @@
                     <option value='{{outlets.4.sourceId}},{{outlets.4.sourceName}}' selected>{{outlets.4.sourceName}}</option>
                 </select>
         </div>
-        </div>
-        <br />
         <input type="submit" value="Configure"/>
     </form>
 {% endblock %}

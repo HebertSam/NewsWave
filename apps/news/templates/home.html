@@ -5,15 +5,17 @@
         margin-left:auto;
         margin-right:auto;
         overflow-x: scroll;
-        max-width:95%;
         max-height:600px;
+        max-width:95%;
         display:flex;
         flex-direction: row;
         background-color:white;
+        margin-bottom:10px;
     }
     .story{
         display:inline-block;
         max-width:500px;
+        max-height: 5000px;
         border: 4px solid teal;
         vertical-align: top;
         padding:10px;
@@ -74,7 +76,7 @@ $(document).ready(function(){
                     var story = stories[j];
                     console.log(story.title);
                     console.log(story.title.replace(/["']/g, "&quot;"));
-                    var titleString = "<a class='title' href='" + story.url + "'>" + story.title + "</a><br />";
+                    var titleString = "<a class='title' href='" + story.url + "' target='_blank'>" + story.title + "</a><br />";
                     var imgString = "<img src='" + story.urlToImage + "'/><br />";
                     var descString = "<p>" + story.description + "</p>";
                     var formString = "<form action='/add_story' method='post' class='storyForm'>{% csrf_token %}<input type='hidden' name='url' value='" + story.url + "'/><input type='hidden' name='title' value='" + story.title.replace(/["]/g, "&quot;").replace(/[']/g, "&apos;") + "'/><input type='submit' class='story_submit' value='Add to reading list'></form>";
