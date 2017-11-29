@@ -13,5 +13,7 @@ urlpatterns = [
   url(r'^delete_story$', views.delete_story), # POST request for user to delete stories  from reading list
   url(r'^notes$', views.notes), # user retrieves notes from DB
   url(r'^new_note$', views.new_note), # POST new note to database
-  url(r'^delete_note$', views.delete_note) # POST that deletes a user's note
+  url(r'^delete_note$', views.delete_note), # POST that deletes a user's note
+  url(r'^get_news', views.getNews), # makes api request and returns json
+  url(r'^getLangs/', views.getLangs),
 ]

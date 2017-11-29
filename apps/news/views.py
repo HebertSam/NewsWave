@@ -5,7 +5,10 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.core import serializers
 from datetime import datetime
+import requests
 from .models import *
+
+
 
 def start(request):
     init_session(request)
@@ -77,6 +80,18 @@ def home(request):
         'current_page': "home"
     }
     return render(request, "home.html", context)
+
+def getLangs(request):
+    response = requests.get("https://newsapi.org/v1/sources?language=en")
+    print response.json()
+    return JsonResponse(response.json())
+    return None
+
+def getNews(request):
+    user = User.objects.get(id=request.session['user_id'])
+    response = requests.get('https://newsapi.org/v1/articles?source=' + user.outlets.sourceId + "&apiKey=4d48612e30ef4e4f8a55c0d6e6f984ef")
+    print response
+    return JsonResponse(response)
 
 def notes(request):
     if request.session['user_id'] == "":

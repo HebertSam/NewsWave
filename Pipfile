@@ -1,0 +1,24 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+
+click = "==6.7"
+flask = "==0.12.2"
+itsdangerous = "==0.24"
+"jinja2" = "==2.9.6"
+markupsafe = "==1.0"
+pytz = "==2017.2"
+virtualenv = "==15.1.0"
+werkzeug = "==0.12.2"
+django = "*"
+bcrypt = "*"
+requests = "*"

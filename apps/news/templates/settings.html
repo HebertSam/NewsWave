@@ -17,7 +17,7 @@
     <script>
         $(document).ready(function(){
             $.ajax({
-                url: "https://newsapi.org/v1/sources?language=en",
+                url: "/getLangs",
                 method: "GET"
             })
             .done(function(sources){

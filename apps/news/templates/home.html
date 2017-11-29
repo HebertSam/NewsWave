@@ -62,7 +62,7 @@ $(document).ready(function(){
         var sourceId = outlets[i].id;
         (function(sourceId){
             $.ajax({
-                url: "https://newsapi.org/v1/articles?source=" + sourceId + "&apiKey=4d48612e30ef4e4f8a55c0d6e6f984ef",
+                url: "/get_news",
                 method: "GET"
             })
             .done(function(source){
