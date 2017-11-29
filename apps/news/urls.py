@@ -15,5 +15,5 @@ urlpatterns = [
   url(r'^new_note$', views.new_note), # POST new note to database
   url(r'^delete_note$', views.delete_note), # POST that deletes a user's note
   url(r'^news/(?P<sourceId>.*)$', views.getNews), # makes api request and returns json
-  url(r'^getLangs$', views.getLangs),
+  url(r'^get_langs$', views.getLangs),
 ]

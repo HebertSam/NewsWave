@@ -90,7 +90,7 @@ def getLangs(request):
 def getNews(request, sourceId):
     print "get news!!!!! " + sourceId + " other stuffs!!"
     response = requests.get("https://newsapi.org/v1/articles?source=" + sourceId + "&apiKey=c54909dbb0e848f0824204955e09f195")
-    print response.json()
+    # print response.json()
     return JsonResponse(response.json())
 
 def notes(request):
