@@ -56,13 +56,20 @@
 <script>
     // fix the quote problem: replace quotes with some delimiter. For reading list, find-replace
 $(document).ready(function(){
+    // $.ajax({
+    //     url: "/get_news",
+    //     method: "GET"
+    // }).done(function(source){
+    //     console.log(source);
+    // })
     var outlets = $(".outlet");
     // part 1: populate outlet rows with articles
     for(let i = 0; i < outlets.length; i++){
         var sourceId = outlets[i].id;
         (function(sourceId){
+            console.log(sourceId)
             $.ajax({
-                url: "/get_news",
+                url: `/news/${sourceId}`,
                 method: "GET"
             })
             .done(function(source){

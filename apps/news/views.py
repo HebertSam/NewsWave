@@ -64,7 +64,7 @@ def home(request):
     if request.session['user_id'] == "":
         return redirect("/")
     user = User.objects.get(id=request.session['user_id'])
-    print user.outlets
+    # print user.outlets
     locations = user.locations.all()
     outlets = user.outlets.all()
     if len(locations) == 0:
@@ -83,15 +83,15 @@ def home(request):
 
 def getLangs(request):
     response = requests.get("https://newsapi.org/v1/sources?language=en")
-    print response.json()
+    # print response.json()
     return JsonResponse(response.json())
     return None
 
-def getNews(request):
-    user = User.objects.get(id=request.session['user_id'])
-    response = requests.get('https://newsapi.org/v1/articles?source=' + user.outlets.sourceId + "&apiKey=4d48612e30ef4e4f8a55c0d6e6f984ef")
-    print response
-    return JsonResponse(response)
+def getNews(request, sourceId):
+    print "get news!!!!! " + sourceId + " other stuffs!!"
+    response = requests.get("https://newsapi.org/v1/articles?source=" + sourceId + "&apiKey=c54909dbb0e848f0824204955e09f195")
+    print response.json()
+    return JsonResponse(response.json())
 
 def notes(request):
     if request.session['user_id'] == "":
